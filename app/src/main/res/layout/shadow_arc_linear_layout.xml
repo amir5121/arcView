@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.amir.arcview.ArcLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    app:itemsOffset="7dp"
+    app:useMinPadding="true">
+
+    <ImageView
+        style="@style/EditActivityImageView"
+        android:contentDescription="@string/app_name"
+        android:padding="2dp"
+        android:src="@drawable/ic_shadow" />
+
+    <ImageView
+        android:id="@+id/include_buttons_shadow_color"
+        style="@style/EditActivityImageView"
+        android:contentDescription="@string/app_name"
+        android:padding="1dp"
+        android:src="@drawable/ic_color" />
+
+    <ImageView
+        android:id="@+id/include_buttons_shadow_radius"
+        style="@style/EditActivityImageView"
+        android:alpha=".6"
+        android:contentDescription="@string/app_name"
+        android:padding="1dp"
+        android:src="@drawable/ic_shadow_radius" />
+
+
+    <TextView
+        android:id="@+id/include_buttons_shadow_dx"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingStart="15dp"
+        android:paddingEnd="15dp"
+        android:text="@string/x"
+        android:textColor="@color/white"
+        android:textSize="21sp" />
+
+    <TextView
+        android:id="@+id/include_buttons_shadow_dy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingStart="15dp"
+        android:paddingEnd="15dp"
+        android:text="@string/y"
+        android:textColor="@color/white"
+        android:textSize="21sp" />
+
+
+</com.amir.arcview.ArcLinearLayout>

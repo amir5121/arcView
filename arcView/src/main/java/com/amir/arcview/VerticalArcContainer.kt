@@ -3,19 +3,18 @@ package com.amir.arcview
 import android.animation.Animator
 import android.animation.Animator.AnimatorListener
 import android.content.Context
-import android.os.Build
 import android.os.Handler
 import android.util.AttributeSet
 import android.util.Log
 import android.view.ViewGroup
 import android.view.animation.AccelerateDecelerateInterpolator
 import android.view.animation.DecelerateInterpolator
-import androidx.annotation.RequiresApi
 import java.util.*
 
 class VerticalArcContainer : ViewGroup {
     var prevChildBottom = 0 //kinda doesn't need to be global
-    var childrenStrokes: MutableList<Int>? = null
+    var isKnockedIn: Boolean = true
+    lateinit var childrenStrokes: MutableList<Int>
     private var totalHeight = 0f
     private var animationBuffer = 0
     private var animationCallBack: ArcCallBack? = null
@@ -39,16 +38,6 @@ class VerticalArcContainer : ViewGroup {
         startUp(context)
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-    constructor(
-        context: Context,
-        attrs: AttributeSet?,
-        defStyleAttr: Int,
-        defStyleRes: Int
-    ) : super(context, attrs, defStyleAttr, defStyleRes) {
-        startUp(context)
-    }
-
     private fun startUp(context: Context) {
 //        mScrollViewChildren = new HashMap<>();
         childrenStrokes = ArrayList()
@@ -65,7 +54,7 @@ class VerticalArcContainer : ViewGroup {
 
     private fun collapseChild(i: Int) {
         val child = getChildAt(i) as ArcScrollView
-        val size = childrenStrokes!!.size
+        val size = childrenStrokes.size
         if (i in 0 until size) child.animate() //                        .translationY(childrenStrokes.get(i) + child.getStrokeWidth())
             //                        .translationY(prevChildBottom)
             .translationY(totalHeight)
@@ -73,7 +62,11 @@ class VerticalArcContainer : ViewGroup {
             .setListener(object : AnimatorListener {
                 override fun onAnimationStart(animation: Animator) {}
                 override fun onAnimationEnd(animation: Animator) {
-                    if (i == 0) animationCallBack!!.itAllKnockedOut()
+                    if (i == 0) {
+                        animationCallBack?.itAllKnockedOut()
+                        isKnockedIn = false
+                    }
+
                 }
 
                 override fun onAnimationCancel(animation: Animator) {}
@@ -90,13 +83,16 @@ class VerticalArcContainer : ViewGroup {
     fun expandChild(childPosition: Int) {
         val child = getChildAt(childPosition)
         if (child != null) {
-            if (childPosition >= 0 && childPosition < childrenStrokes!!.size) child.animate()
+            if (childPosition >= 0 && childPosition < childrenStrokes.size) child.animate()
                 .translationY(0f)
                 .setDuration(400)
                 .setListener(object : AnimatorListener {
                     override fun onAnimationStart(animation: Animator) {}
                     override fun onAnimationEnd(animation: Animator) {
-                        if (childPosition == childrenStrokes!!.size - 1) animationCallBack!!.itAllKnockedIn()
+                        if (childPosition == childrenStrokes.size - 1) {
+                            animationCallBack?.itAllKnockedIn()
+                            isKnockedIn = true
+                        }
                     }
 
                     override fun onAnimationCancel(animation: Animator) {}
@@ -216,7 +212,7 @@ class VerticalArcContainer : ViewGroup {
         if (prevChildBottom == 0) {
 //            prevChildBottom = 0;
 //            int prevChildBottomReversed = 0;
-            childrenStrokes!!.clear()
+            childrenStrokes.clear()
             //            for (int i = 0; i < count; i++) {
             for (i in count - 1 downTo 0) {
                 val child = getChildAt(i)
@@ -224,7 +220,7 @@ class VerticalArcContainer : ViewGroup {
                 if (child is ArcScrollView) {
                     val currArcScrollView = child
                     currArcScrollView.setPrevChildBottom(prevChildBottom)
-                    childrenStrokes!!.add(prevChildBottom)
+                    childrenStrokes.add(prevChildBottom)
                     prevChildBottom += currArcScrollView.strokeWidth
                     totalHeight += currArcScrollView.strokeWidth
                     //                Log.e(getClass().getSimpleName(), "prevChildBottom: " + prevChildBottom);

@@ -10,7 +10,7 @@ import kotlin.math.pow
 import kotlin.math.sqrt
 
 class ArcLinearLayout : LinearLayout {
-    var radiusPow2 = 0f
+    private var radiusPow2 = 0f
     private var arcElevation = 0f
     private var radius = 0f
     private var containerWidth = 0

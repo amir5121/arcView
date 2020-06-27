@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.amir.arcview.ArcLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    app:itemsOffset="7dp"
+    app:useMinPadding="true">
+
+    <ImageView
+        style="@style/EditActivityImageView"
+        android:contentDescription="@string/app_name"
+        android:padding="3dp"
+        android:src="@drawable/ic_stroke_blue" />
+
+
+    <ImageView
+        android:id="@+id/include_buttons_text_stroke_color"
+        style="@style/EditActivityImageView"
+        android:contentDescription="@string/app_name"
+        android:src="@drawable/ic_color" />
+
+    <ImageView
+        android:id="@+id/include_buttons_text_stroke_width"
+        style="@style/EditActivityImageView"
+        android:contentDescription="@string/app_name"
+        android:src="@drawable/ic_bi_direction_arrow" />
+
+</com.amir.arcview.ArcLinearLayout>

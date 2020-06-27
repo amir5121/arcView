@@ -7,4 +7,13 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="EditActivityImageView" parent="android:Theme.NoTitleBar.Fullscreen">
+        <item name="android:layout_width">@dimen/edit_image_activity_button_size</item>
+        <item name="android:layout_height">@dimen/edit_image_activity_button_size</item>
+        <item name="android:scaleType">fitCenter</item>
+        <item name="android:clickable">true</item>
+        <item name="android:paddingStart">7dp</item>
+        <item name="android:paddingEnd">7dp</item>
+        <item name="android:layout_gravity">center_horizontal</item>
+    </style>
 </resources>
