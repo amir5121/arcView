@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="ArcScrollView">
+        <attr name="radius" format="dimension" />
+        <attr name="stroke_width" format="dimension" />
+        <!--<attr name="level" format="integer" />-->
+        <attr name="findBestWidth" format="boolean" />
+    </declare-styleable>
+
+    <declare-styleable name="ArcLinearLayout">
+        <attr name="useMinPadding" format="boolean" />
+        <attr name="itemsOffset" format="dimension" />
+    </declare-styleable>
+</resources>
