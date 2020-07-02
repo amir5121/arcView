@@ -10,7 +10,7 @@
         android:id="@+id/include_arc_buttons_temp_arc"
         android:layout_width="match_parent"
         android:layout_height="150dp"
-        android:background="@color/move_button_background"
+        android:background="#2196F3"
         android:elevation="3dp"
         android:visibility="gone"
         app:findBestWidth="true"
@@ -21,7 +21,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:background="#4499ff"
+        android:background="#b71c1c"
         android:elevation="5dp"
         app:findBestWidth="true"
         app:radius="400dp"
@@ -50,43 +50,81 @@
                 android:src="@drawable/ic_shadow" />
 
             <ImageView
-                android:id="@+id/include_buttons_size_button"
                 style="@style/EditActivityImageView"
                 android:contentDescription="@string/app_name"
                 android:src="@drawable/ic_size" />
 
             <ImageView
-                android:id="@+id/include_buttons_font_button"
                 style="@style/EditActivityImageView"
                 android:contentDescription="@string/app_name"
                 android:src="@drawable/ic_font" />
 
             <ImageView
-                android:id="@+id/include_buttons_text_color"
                 style="@style/EditActivityImageView"
                 android:contentDescription="@string/app_name"
                 android:src="@drawable/ic_color" />
 
             <ImageView
-                android:id="@+id/include_buttons_tilt_button"
                 style="@style/EditActivityImageView"
                 android:contentDescription="@string/app_name"
                 android:src="@drawable/ic_rotate_right" />
 
             <ImageView
-                android:id="@+id/include_buttons_text_background"
                 style="@style/EditActivityImageView"
                 android:contentDescription="@string/app_name"
                 android:src="@drawable/ic_background_color" />
 
             <ImageView
-                android:id="@+id/include_buttons_duplicate"
                 style="@style/EditActivityImageView"
                 android:contentDescription="@string/app_name"
                 android:src="@drawable/ic_copy" />
 
             <ImageView
-                android:id="@+id/include_buttons_remove"
+                style="@style/EditActivityImageView"
+                android:contentDescription="@string/app_name"
+                android:src="@drawable/ic_close_white" />
+
+            <ImageView
+                style="@style/EditActivityImageView"
+                android:contentDescription="@string/app_name"
+                android:src="@drawable/ic_stroke" />
+
+            <ImageView
+                style="@style/EditActivityImageView"
+                android:contentDescription="@string/app_name"
+                android:src="@drawable/ic_shadow" />
+
+            <ImageView
+                style="@style/EditActivityImageView"
+                android:contentDescription="@string/app_name"
+                android:src="@drawable/ic_size" />
+
+            <ImageView
+                style="@style/EditActivityImageView"
+                android:contentDescription="@string/app_name"
+                android:src="@drawable/ic_font" />
+
+            <ImageView
+                style="@style/EditActivityImageView"
+                android:contentDescription="@string/app_name"
+                android:src="@drawable/ic_color" />
+
+            <ImageView
+                style="@style/EditActivityImageView"
+                android:contentDescription="@string/app_name"
+                android:src="@drawable/ic_rotate_right" />
+
+            <ImageView
+                style="@style/EditActivityImageView"
+                android:contentDescription="@string/app_name"
+                android:src="@drawable/ic_background_color" />
+
+            <ImageView
+                style="@style/EditActivityImageView"
+                android:contentDescription="@string/app_name"
+                android:src="@drawable/ic_copy" />
+
+            <ImageView
                 style="@style/EditActivityImageView"
                 android:contentDescription="@string/app_name"
                 android:src="@drawable/ic_close_white" />

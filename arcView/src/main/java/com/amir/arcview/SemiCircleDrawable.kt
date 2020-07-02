@@ -13,7 +13,7 @@ class SemiCircleDrawable(
     //http://stackoverflow.com/questions/15962745/draw-a-semicircle-in-the-background-of-a-view
     private val circleRadius: Float
     private val elevation: Float
-    private val paint: Paint
+    private val paint: Paint = Paint(Paint.ANTI_ALIAS_FLAG)
     private val rectF: RectF
     private val width: Int
 
@@ -95,7 +95,6 @@ class SemiCircleDrawable(
     //        this(Color.BLUE, Direction.TOP, 0);
     //    }
     init {
-        paint = Paint(Paint.ANTI_ALIAS_FLAG)
         paint.color = color
         paint.style = Paint.Style.FILL
         rectF = RectF()

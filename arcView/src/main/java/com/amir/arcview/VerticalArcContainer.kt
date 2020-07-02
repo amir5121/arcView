@@ -39,7 +39,6 @@ class VerticalArcContainer : ViewGroup {
     }
 
     private fun startUp(context: Context) {
-//        mScrollViewChildren = new HashMap<>();
         childrenStrokes = ArrayList()
         try {
             animationCallBack = context as ArcCallBack
@@ -112,70 +111,30 @@ class VerticalArcContainer : ViewGroup {
     ) {
         var rightOffset: Int
         val count = childCount
-        //        childrenStrokes.clear();
-//        mScrollViewChildren.clear();
 
-//        Log.e(getClass().getSimpleName(), " onLayout was called");
         prevChildBottom = 0
         for (i in 0 until count) {
             val child = getChildAt(i)
-            //            rightOffset = child.getLeft();
+
             rightOffset = child.left
             if (child is ArcScrollView) {
-                //                Log.e(getClass().getSimpleName(), " getWidth(): " + getWidth());
                 if (child.isCenterHorizontal) rightOffset =
                     width / 2 - child.getMeasuredWidth() / 2
-                //                Log.e(getClass().getSimpleName(), " rightOffset: " + rightOffset + " getWidth: " + getWidth() + " currArcScrollView.getWidth(): " + currArcScrollView.getWidth() + " child.getMeasuredWidth(): " + child.getMeasuredWidth());
-//                Log.e(getClass().getSimpleName(), "count: " + count + " i: " + i);
-
-//                int bestWidth = currArcScrollView.getNewWidth(childrenStrokes.get(count - i - 1));
-//                int bestWidth = currArcScrollView.getNewWidth(childrenStrokes.get(i));
-//                int bestWidth = currArcScrollView.getNewWidth();
-//                if (Build.VERSION.SDK_INT == Build.VERSION_CODES.N) //FML
-//                    bestWidth *= 2;
-//                int bestWidth = currArcScrollView.getNewWidth(prevChildBottom);
-//                Log.e(getClass().getSimpleName(), "newWidth: " + bestWidth + " i: " + i + " prevChildBottom: " + prevChildBottom + " measuredWidth: " + child.getMeasuredWidth());
-//                Log.e(getClass().getSimpleName(), "i: " + i + " prevChildBottom: " + prevChildBottom + " measuredWidth: " + child.getMeasuredWidth() + " bottom: " + childrenStrokes.get(count - 1));
-//                Log.e(getClass().getSimpleName(), "-----i: " + i + " used bestWidth: " + bestWidth + " measuredWidth: " + child.getMeasuredWidth() + " rightOffset: " + rightOffset);
-//                if (bestWidth != 0 && child.getMeasuredWidth() > bestWidth) {
-//                    child.layout(
-//                            rightOffset,
-//                            prevChildBottom,
-////                            rightOffset + child.getMeasuredWidth(),
-//                            rightOffset + bestWidth,
-//                            prevChildBottom + child.getMeasuredHeight());
-////                            (int) (prevChildBottom + currArcScrollView.getStrokeWidth()));
-////                            childrenStrokes.get(count - 1));
-//                } else {
                 child.layout(
                     rightOffset,
                     prevChildBottom,
                     rightOffset + child.getMeasuredWidth(),  //                            rightOffset + 100,
-                    //                            prevChildBottom + child.getMeasuredHeight());
-                    //                            (int) (prevChildBottom + currArcScrollView.getStrokeWidth()));
-                    //                            prevChildBottom + childrenStrokes.get(count - i - 1));
-                    //                            childrenStrokes.get(count - 1));
                     totalHeight.toInt()
                 )
 
-//                }
                 prevChildBottom += child.strokeWidth
-                //                mScrollViewChildren.put(currArcScrollView.getLevel(), currArcScrollView);
-//                Log.e(getClass().getSimpleName(), "i: " + i + " level: " + currArcScrollView.getLevel() + " visibility: " + currArcScrollView.getVisibility());
             } else {
                 Log.e(
                     javaClass.simpleName,
                     " onLayout else was called ****MUST NOT HAPPEN***"
                 )
-                //                child.layout(rightOffset, prevChildBottom,
-//                        rightOffset + child.getMeasuredWidth(),
-//                        prevChildBottom + child.getMeasuredHeight());
-//                prevChildBottom += child.getMeasuredHeight();
-//                childrenStrokes.add(child.getMeasuredHeight());
             }
-            //            childrenStrokes.add(prevChildBottom);
         }
-        //        Log.e(getClass().getSimpleName(), "onLayout prevChildBottom: " + prevChildBottom);
     }
 
     fun knockout() {
@@ -208,39 +167,21 @@ class VerticalArcContainer : ViewGroup {
         //todo: optimize... wtf you have written
         val count = childCount
 
-//        int count = getChildCount();
         if (prevChildBottom == 0) {
-//            prevChildBottom = 0;
-//            int prevChildBottomReversed = 0;
             childrenStrokes.clear()
-            //            for (int i = 0; i < count; i++) {
             for (i in count - 1 downTo 0) {
                 val child = getChildAt(i)
-                //                measureChild(child, widthMeasureSpec, heightMeasureSpec);
                 if (child is ArcScrollView) {
-                    val currArcScrollView = child
-                    currArcScrollView.setPrevChildBottom(prevChildBottom)
+                    child.setPrevChildBottom(prevChildBottom)
                     childrenStrokes.add(prevChildBottom)
-                    prevChildBottom += currArcScrollView.strokeWidth
-                    totalHeight += currArcScrollView.strokeWidth
-                    //                Log.e(getClass().getSimpleName(), "prevChildBottom: " + prevChildBottom);
+                    prevChildBottom += child.strokeWidth
+                    totalHeight += child.strokeWidth
                 } else {
                     throw RuntimeException("VerticalArcContainer can only contain ArcScrollView")
                 }
             }
         }
 
-//        for (int i = count - 1; i >= 0; i--) {
-//            final View child = getChildAt(i);
-////                measureChild(child, widthMeasureSpec, heightMeasureSpec);
-//            if (child instanceof ArcScrollView) {
-//                ArcScrollView currArcScrollView = ((ArcScrollView) child);
-//                currArcScrollView.setPrevChildBottom(childrenStrokes.get(count - 1 - i));
-//                Log.e(getClass().getSimpleName(), "i: " + i + " childrenStrokes.get(i): " + childrenStrokes.get(count - 1 - i));
-//            }
-//        }
-
-//        Log.e(getClass().getSimpleName(), "onMeasure widthMeasureSpec: " + widthMeasureSpec + " heightMeasureSpec: " + heightMeasureSpec);
         val desiredHeight = prevChildBottom
         val widthMode = MeasureSpec.getMode(widthMeasureSpec)
         val widthSize = MeasureSpec.getSize(widthMeasureSpec)
@@ -250,42 +191,41 @@ class VerticalArcContainer : ViewGroup {
         val height: Int
 
         //Measure Width
-        width = if (widthMode == MeasureSpec.EXACTLY) {
-            //Must be this size
-            widthSize
-            //            Log.e(getClass().getSimpleName(), "width EXACTLY: " + width);
-        } else if (widthMode == MeasureSpec.AT_MOST) {
-            //Can't be bigger than...
-            Math.min(widthMeasureSpec, widthSize)
-            //            Log.e(getClass().getSimpleName(), "width AT_MOST: " + width);
-        } else {
-            //Be whatever you want
-            widthMeasureSpec
-            //            Log.e(getClass().getSimpleName(), "width else: " + width);
+        width = when (widthMode) {
+            MeasureSpec.EXACTLY -> {
+                //Must be this size
+                widthSize
+            }
+            MeasureSpec.AT_MOST -> {
+                //Can't be bigger than...
+                widthMeasureSpec.coerceAtMost(widthSize)
+            }
+            else -> {
+                //Be whatever you want
+                widthMeasureSpec
+            }
         }
 
         //Measure Height
-        height = if (heightMode == MeasureSpec.EXACTLY) {
-            //Must be this size
-            heightSize
-            //            Log.e(getClass().getSimpleName(), "height EXACTLY: " + height);
-        } else if (heightMode == MeasureSpec.AT_MOST) {
-            //Can't be bigger than...
-//            height = Math.min(desiredHeight, heightSize);
-            Math.min(desiredHeight, heightSize)
-            //            Log.e(getClass().getSimpleName(), "height AT_MOST: " + height);
-        } else {
-            //Be whatever you want
-            desiredHeight
-            //            Log.e(getClass().getSimpleName(), "height else: " + height);
+        height = when (heightMode) {
+            MeasureSpec.EXACTLY -> {
+                //Must be this size
+                heightSize
+            }
+            MeasureSpec.AT_MOST -> {
+                //Can't be bigger than...
+                desiredHeight.coerceAtMost(heightSize)
+            }
+            else -> {
+                //Be whatever you want
+                desiredHeight
+            }
         }
 
         //MUST CALL THIS
         setMeasuredDimension(width, height)
-        //        Log.e(getClass().getSimpleName(), "onMeasure height is: " + height + " width: " + width + " prevChildBottom: " + prevChildBottom + " widthMeasureSpec: " + widthMeasureSpec + " heightMeasureSpec: " + heightMeasureSpec);
         for (i in 0 until count) {
             val child = getChildAt(i)
-            //            measureChild(child, widthMeasureSpec, heightMeasureSpec);
             measureChild(
                 child,
                 MeasureSpec.makeMeasureSpec(width, MeasureSpec.EXACTLY),
