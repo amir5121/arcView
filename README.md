@@ -1,6 +1,7 @@
 # arcView
 
-ArcView is an android library for showing list
+ArcView is an android library for showing list like an arc
+
 
 ## Installation
  - Gradle
@@ -23,6 +24,9 @@ Add it in your root `build.gradle` at the end of repositories:
 
 ## Usage
 
+![gif](https://media.giphy.com/media/jrzFqaxhIKyjTzIA4B/giphy.gif)
+
+`layout.xml`
 ```
 <?xml version="1.0" encoding="utf-8"?>
 <com.amir.arcview.VerticalArcContainer xmlns:android="http://schemas.android.com/apk/res/android"
@@ -32,6 +36,7 @@ Add it in your root `build.gradle` at the end of repositories:
     android:layout_height="wrap_content"
     android:layout_alignParentBottom="true">
 
+    <!--used to swap views in and out-->
     <com.amir.arcview.ArcScrollView
         android:id="@+id/include_arc_buttons_temp_arc"
         android:layout_width="match_parent"
@@ -59,67 +64,13 @@ Add it in your root `build.gradle` at the end of repositories:
             app:itemsOffset="7dp"
             app:useMinPadding="true">
 
-            <View
-                android:layout_width="25dp"
-                android:layout_height="0dp" />
-
             <ImageView
                 android:id="@+id/include_buttons_stroke"
                 style="@style/EditActivityImageView"
                 android:contentDescription="@string/app_name"
                 android:src="@drawable/ic_stroke" />
 
-            <ImageView
-                android:id="@+id/include_buttons_shadow"
-                style="@style/EditActivityImageView"
-                android:contentDescription="@string/app_name"
-                android:src="@drawable/ic_shadow" />
-
-            <ImageView
-                android:id="@+id/include_buttons_size_button"
-                style="@style/EditActivityImageView"
-                android:contentDescription="@string/app_name"
-                android:src="@drawable/ic_size" />
-
-            <ImageView
-                android:id="@+id/include_buttons_font_button"
-                style="@style/EditActivityImageView"
-                android:contentDescription="@string/app_name"
-                android:src="@drawable/ic_font" />
-
-            <ImageView
-                android:id="@+id/include_buttons_text_color"
-                style="@style/EditActivityImageView"
-                android:contentDescription="@string/app_name"
-                android:src="@drawable/ic_color" />
-
-            <ImageView
-                android:id="@+id/include_buttons_tilt_button"
-                style="@style/EditActivityImageView"
-                android:contentDescription="@string/app_name"
-                android:src="@drawable/ic_rotate_right" />
-
-            <ImageView
-                android:id="@+id/include_buttons_text_background"
-                style="@style/EditActivityImageView"
-                android:contentDescription="@string/app_name"
-                android:src="@drawable/ic_background_color" />
-
-            <ImageView
-                android:id="@+id/include_buttons_duplicate"
-                style="@style/EditActivityImageView"
-                android:contentDescription="@string/app_name"
-                android:src="@drawable/ic_copy" />
-
-            <ImageView
-                android:id="@+id/include_buttons_remove"
-                style="@style/EditActivityImageView"
-                android:contentDescription="@string/app_name"
-                android:src="@drawable/ic_close_white" />
-
-            <View
-                android:layout_width="25dp"
-                android:layout_height="0dp" />
+            <!--add a bunch of image-->
 
         </com.amir.arcview.ArcLinearLayout>
 
@@ -141,6 +92,7 @@ Add it in your root `build.gradle` at the end of repositories:
             app:itemsOffset="7dp"
             app:useMinPadding="true">
 
+            <!--you can put an empty view on each end if they won't reach the arc-->
             <View
                 android:layout_width="25dp"
                 android:layout_height="0dp" />
@@ -151,65 +103,7 @@ Add it in your root `build.gradle` at the end of repositories:
                 android:contentDescription="@string/app_name"
                 android:src="@drawable/ic_align_top" />
 
-            <ImageView
-                android:id="@+id/activity_edit_image_move_align_left"
-                style="@style/EditActivityImageView"
-                android:contentDescription="@string/app_name"
-                android:src="@drawable/ic_align_left" />
-
-            <ImageView
-                android:id="@+id/activity_edit_image_move_center_horizontal"
-                style="@style/EditActivityImageView"
-                android:contentDescription="@string/app_name"
-                android:src="@drawable/ic_center_horizontal" />
-
-            <ImageView
-                android:id="@+id/activity_edit_image_move_up_button"
-                style="@style/EditActivityImageView"
-                android:contentDescription="@string/app_name"
-                android:src="@drawable/ic_up_arrow" />
-
-            <ImageView
-                android:id="@+id/activity_edit_image_move_down_button"
-                style="@style/EditActivityImageView"
-                android:contentDescription="@string/app_name"
-                android:src="@drawable/ic_down_arrow" />
-
-            <ImageView
-                android:id="@+id/activity_edit_image_move_left_button"
-                style="@style/EditActivityImageView"
-                android:contentDescription="@string/app_name"
-                android:src="@drawable/ic_left_arrow" />
-
-
-            <ImageView
-                android:id="@+id/activity_edit_image_move_right_button"
-                style="@style/EditActivityImageView"
-                android:contentDescription="@string/app_name"
-                android:src="@drawable/ic_right_arrow" />
-
-
-            <ImageView
-                android:id="@+id/activity_edit_image_move_center_vertical"
-                style="@style/EditActivityImageView"
-                android:contentDescription="@string/app_name"
-                android:src="@drawable/ic_center_vertical" />
-
-            <ImageView
-                android:id="@+id/activity_edit_image_move_align_right"
-                style="@style/EditActivityImageView"
-                android:contentDescription="@string/app_name"
-                android:src="@drawable/ic_align_right" />
-
-            <ImageView
-                android:id="@+id/activity_edit_image_move_align_bottom"
-                style="@style/EditActivityImageView"
-                android:contentDescription="@string/app_name"
-                android:src="@drawable/ic_align_bottom" />
-
-            <View
-                android:layout_width="25dp"
-                android:layout_height="0dp" />
+            <!--add a bunch of image-->
 
         </com.amir.arcview.ArcLinearLayout>
 
@@ -248,8 +142,120 @@ Add it in your root `build.gradle` at the end of repositories:
 
 </com.amir.arcview.VerticalArcContainer>
 ```
+`MainActivity.kt`
+```
+package com.amir.arclistview
 
-![gif](https://media.giphy.com/media/igVoMAtVWycI7W8bUf/giphy.gif)
+import android.os.Bundle
+import android.util.Log
+import android.view.View
+import androidx.appcompat.app.AppCompatActivity
+import com.amir.arcview.ArcLinearLayout
+import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.include_arc_button.*
+
+class MainActivity : AppCompatActivity(), View.OnClickListener {
+    private val TAG: String = "MainActivity"
+    private lateinit var strokeArc: ArcLinearLayout
+    private lateinit var shadowArc: ArcLinearLayout
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+        kick_me.setOnClickListener(this)
+        kick_swapped.setOnClickListener(this)
+        include_buttons_stroke.setOnClickListener(this)
+        include_buttons_shadow.setOnClickListener(this)
+        strokeArc =
+            layoutInflater.inflate(
+                R.layout.stroke_arc_linear_layout,
+                include_arc_buttons_temp_arc,
+                false
+            ) as ArcLinearLayout
+        shadowArc =
+            layoutInflater.inflate(
+                R.layout.shadow_arc_linear_layout,
+                include_arc_buttons_temp_arc,
+                false
+            ) as ArcLinearLayout
+    }
+
+    override fun onClick(v: View?) {
+        when (v) {
+            kick_me -> {
+                if (include_buttons_scroll_view.isKnockedIn) {
+                    include_buttons_scroll_view.knockout()
+                } else {
+                    include_buttons_scroll_view.knockIn()
+                }
+            }
+            kick_swapped -> {
+                Log.wtf(TAG, "onClick: swapped")
+                include_arc_buttons_temp_arc.swapView(null)
+            }
+            include_buttons_shadow -> {
+                include_arc_buttons_temp_arc.swapView(shadowArc)
+            }
+            include_buttons_stroke -> {
+                include_arc_buttons_temp_arc.swapView(strokeArc)
+            }
+        }
+    }
+}
+```
+![gif](https://media.giphy.com/media/j1hUT1JJkpjDsizDgK/giphy.gif)
+```
+<?xml version="1.0" encoding="utf-8"?>
+<com.amir.arcview.ArcScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="200dp"
+    android:layout_alignParentBottom="true"
+    android:layout_centerHorizontal="true"
+    android:background="#b71c1c"
+    android:elevation="5dp"
+    app:radius="250dp"
+    app:stroke_width="200dp">
+
+    <com.amir.arcview.ArcLinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        app:itemsOffset="7dp"
+        app:useMinPadding="true">
+
+        <ImageView
+            android:id="@+id/include_buttons_stroke"
+            style="@style/EditActivityImageView"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/ic_stroke" />
+
+        <ImageView
+            android:id="@+id/include_buttons_shadow"
+            style="@style/EditActivityImageView"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/ic_shadow" />
+
+        <!--add a bunch of image-->
+
+    </com.amir.arcview.ArcLinearLayout>
+
+</com.amir.arcview.ArcScrollView>
+
+```
+
+## API
+### styleables
+    ArcScrollView
+        radius: dimension = defines the radius of the drawn circle
+        stroke_width: dimension = defines how much of the circle should be visible
+        findBestWidth: boolean = let the ArcScrollView decide the width
+
+    ArcLinearLayout
+        useMinPadding: boolean = add an extra padding to top and bottom of items if set to true won't add any extra padding
+        itemsOffset: dimension = how much the items in ArcLinearLayout should be offset from top of the arc
+
+## What need to be implemented?
+Currently it doesn't support screen rotation. if this feature is asked for i will work on it.
+
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
