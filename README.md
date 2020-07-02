@@ -1,7 +1,7 @@
+[![](https://jitpack.io/v/amir5121/arcView.svg)](https://jitpack.io/#amir5121/arcView)
 # arcView
 
 ArcView is an android library for showing list like an arc
-
 
 ## Installation
  - Gradle
@@ -17,7 +17,7 @@ Add it in your root `build.gradle` at the end of repositories:
     add the dependency
     ```
     dependencies {
-	        implementation 'com.github.amir5121:arcView:1.0.0'
+	        implementation 'com.github.amir5121:arcView:TAG'
 	}
     ```
  - [More ways to add it](https://jitpack.io/#amir5121/arcView/)
