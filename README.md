@@ -1,4 +1,6 @@
 [![](https://jitpack.io/v/amir5121/arcView.svg)](https://jitpack.io/#amir5121/arcView)
+[![Android Arsenal]( https://img.shields.io/badge/Android%20Arsenal-ArcView-green.svg?style=flat )]( https://android-arsenal.com/details/1/8130 )
+
 # arcView
 
 ArcView is an android library for showing list like an arc
